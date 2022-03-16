@@ -1,0 +1,6 @@
+.post {
+    border: solid 2px rgba(211,211,211,0.38);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+}

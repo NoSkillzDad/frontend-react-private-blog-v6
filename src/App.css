@@ -1,38 +1,66 @@
-.App {
-  text-align: center;
+.container {
+  width: 1200px;
+  margin: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content {
+  width: 90%;
+  margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  justify-content: flex-end;
+  background-color: #ec5a3c;
+
+  padding: 15px;
 }
 
-.App-link {
-  color: #61dafb;
+.main-nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.main-nav li {
+  margin-left: 5em;
+  /*flex: 1;*/
 }
+
+a {
+  color: #ec5a3c;
+  text-decoration: underline;
+}
+
+.main-nav a {
+  color: #fceacc;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#inactive-button {
+  display: none;
+}
+
+#inactive-link {
+  visibility: hidden;
+}
+
+.active-link {
+  visibility: visible;
+}
+
+/*#login-button {*/
+/*    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',*/
+/*    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',*/
+/*    sans-serif;*/
+/*    background: none;*/
+/*    border: none;*/
+/*    text-decoration: underline;*/
+/*    color: #fceacc;*/
+/*    font-size: 1em;*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*}*/
