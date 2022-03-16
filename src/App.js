@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Routes, Route, NavLink, useNavigate} from 'react-router-dom';
+import {Routes, Route, NavLink} from 'react-router-dom';
 import './App.css';
 import Home from "./pages/Home";
 import BlogPost from "./pages/BlogPost";
@@ -11,7 +11,7 @@ function App() {
     // We houden in de state bij of iemand is "ingelogd" (simpele versie)
     const [isAuthenticated, toggleIsAuthenticated] = useState(false);
 
-    const navigate = useNavigate;
+    // const navigate = useNavigate;
 
     const handleLogout = () => {
         return toggleIsAuthenticated(false);
@@ -22,27 +22,59 @@ function App() {
             <div className={"main-nav"}>
                 <ul>
                     <li>
-                        <NavLink activeClassName={"active"} to="/">Home</NavLink>
+                        <NavLink className={"active"} to="/">Home</NavLink>
                     </li>
                     <li>
                         {isAuthenticated === true &&
-                            <NavLink activeClassName={"active"} to="/blogposts">Blogposts</NavLink>}
+                            <NavLink className={"active"} to="/blogposts">Blogposts</NavLink>}
                     </li>
                     <li>
                         {(isAuthenticated === true) ?
                             <button type={"button"} onClick={handleLogout}>Uitloggen</button> :
-                            <NavLink activeClassName={"active"} to={"/login"}>Login</NavLink>}
+                            <NavLink className={"active"} to={"/login"}>Login</NavLink>}
                     </li>
                 </ul>
             </div>
             <Routes>
                 <Route path={"/"} element={<Home/>}/>
-                <Route path={"/blogposts"} element={<BlogPosts isAuthenticated={isAuthenticated}/>}/>
-                <Route path={"blogposts/:id"} element={<BlogPost  isAuthenticated={isAuthenticated}/>}/>
+
                 <Route
                     path={"/login"}
-                    element={<Login authenticate={() => toggleIsAuthenticated(true)}/>}/>
-                <Route path={"*"} element={<ErrorPage/>}/>
+                    element={<Login authenticate={() => toggleIsAuthenticated(true)}/>}
+                />
+
+                <Route path={"*"}
+                       element={<ErrorPage/>}
+                />
+
+                {/*<Route*/}
+                {/*    path={"/blogposts"}*/}
+                {/*    element={<PrivateRoute isAuthenticated={isAuthenticated} component={BlogPosts}/>}*/}
+                {/*/>*/}
+
+
+                {/*<Route*/}
+                {/*    path={"/blogposts"}*/}
+                {/*    element={*/}
+                {/*        <PrivateRoute isAuthenticated={isAuthenticated}>*/}
+                {/*            <BlogPosts/>*/}
+                {/*        </PrivateRoute>*/}
+                {/*    }*/}
+                {/*/>*/}
+
+                {/*<Route*/}
+                {/*    path={"/blogposts/:id"}*/}
+                {/*    element={*/}
+                {/*        <PrivateRoute  isAuthenticated={isAuthenticated}>*/}
+                {/*            <BlogPost/>*/}
+                {/*        </PrivateRoute>*/}
+                {/*    } isAuthenticated={isAuthenticated}*/}
+                {/*/>*/}
+
+                <Route path={"/blogposts"} element={<BlogPosts isAuthenticated={isAuthenticated}/>}/>
+
+                <Route path={"blogposts/:id"} element={<BlogPost  isAuthenticated={isAuthenticated}/>}/>
+
             </Routes>
         </div>
     );
